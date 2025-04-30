@@ -124,15 +124,30 @@ let data = [
 app.get('/emp', (req, res) => {
   res.send(data)
 })
-
-// 부서가 10번인 첫번째 사원을 return
-app.get('/find', (req, res) => {
-  res.send('Home Hello!')
+// 사원 단건조회
+app.get('/emp/:id', (req, res) => {
+  let id = req.params.id
+  let result = data.find((emp) => emp.id == id )
+  if(result) {
+    res.send(result)
+  } else {
+    res.send("not find")
+  }
 })
 
-// job_id 가 'it'인 사원만 조회하여 return
+// 부서가 10번인 첫번째 사원을 return , /find?departmentId=10
+app.get('/find', (req, res) => {
+  let departmentId = req.query.departmentId
+  let result = data.find((emp) => emp.department_id == departmentId)
+  res.send(result)
+})
+
+
+// job_id 가 'it'인 사원만 조회하여 return , /filter?jobId=it
 app.get('/filter', (req, res) => {
-  res.send('Hello World!')
+  let jobId = req.query.jobId
+  let result = data.filter( (emp) => emp.job_id == jobId)
+  res.send(result)
 })
 
 // firstname 순으로 정렬하여 return

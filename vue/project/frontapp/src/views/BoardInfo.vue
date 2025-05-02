@@ -4,18 +4,17 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th scope="col" class="text-center table-primary"></th>
-            <td scope="col" class="text-center"></td>
+            <th scope="col"class="text-center table-primary">제목 :</th>
+            <td scope="col">{{ boardInfo.title }}</td>
             <th scope="col" class="text-center table-primary">작성일</th>
             <td scope="col" class="text-center">{{ boardInfo.created_date }}</td>
-
             <th scope="col" class="text-center table-primary">이름</th>
             <td scope="col" class="text-center">{{ boardInfo.writer }}</td>
           </tr>
-
+            <th scope="col" class="text-center table-primary">내용 : </th>
+            <td scope="col" class="text-center">{{ boardInfo.content }}</td>
           <tr>
-            <th colspan="2" class="text-center table-primary">제목</th>
-            <td colspan="4">{{ boardInfo.title }}</td>
+
           </tr>
         </thead>
         <tbody>
@@ -39,33 +38,40 @@
         </tbody>
       </table>
     </div>
+
     <!-- 댓글 -->
     <div class="row">
-
+      <CommentComp v-if="boardInfo.id" :bid="boardInfo.id" />
     </div>
   </div>
 </template>
 <script>
 import axios from "axios";
+import CommentComp from "@/components/CommentComp.vue"
 
 export default {
+  components:{CommentComp},
   data() {
     return {
       searchNo: "",
+      bid:"",
       boardInfo: {},
+ 
     };
   },
   created() {
     this.searchNo = this.$route.query.id || "";
     if(this. searchNo>0) {
       this.getBoardInfo();
+   
     }
   },
   methods : {
     async getBoardInfo() {
       let board = await axios.get(`http://localhost:3000/board/${this.searchNo}`);
-      this.boardInfo = board.data;
+      this.boardInfo = board.data[0];
     },
+
     async saveBoard(no) {
       const url = "http://localhost:3000/board";
       let param = {

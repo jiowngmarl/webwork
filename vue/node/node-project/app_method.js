@@ -111,6 +111,7 @@ app.route("/emp")
   //Router를 이용하여 모듈 분리하여 리소스별로 라우트 지정
 app.use("/product" ,require('./routers/product'))
 
+
 app.listen(port, () => {
   console.log(`http://localhost:${port}`) // 서버가 실행될때 콘솔창에 주소를 보여주는 기능의 콜백 함수 (참조만 하기)
 });

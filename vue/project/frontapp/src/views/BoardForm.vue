@@ -5,7 +5,7 @@
       <input v-model="boardInfo.id" type="text" id="no" readonly />
 
       <label for="title">제목</label>
-      <input type="text" id="title" />
+      <input v-model="boardInfo.title" type="text" id="title" />
 
       <label for="writer">작성자</label>
       <input v-model="boardInfo.writer" type="text" id="writer" />
@@ -16,10 +16,10 @@
         style="height: 200px"
         v-model="boardInfo.content"
       ></textarea>
-
-      <label for="regdate">작성일자</label>
-      <input v-model="boardInfo.created_date" type="text" readonly />
-
+      <div v-if="this.searchNo > 0">
+        <label for="regdate">작성일자</label>
+        <input v-bind="dateFormat" type="text" readonly />
+      </div>
       <button
         type="button"
         class="btn btn-xs btn-info"
@@ -47,10 +47,16 @@ export default {
       this.getBoardInfo();
     }
   },
+  computed: {
+    dateFormat() {
+      // 날짜 포맷 date로 바꿔서 년도 달 일 로 나타나게 만들기 (미완성)
+      this.boardInfo.created_date
+    }
+  },  
   methods : {
     async getBoardInfo() {
       let board = await axios.get(`http://localhost:3000/board/${this.searchNo}`);
-      this.boardInfo = board.data;
+      this.boardInfo = board.data[0];
     },
     async saveBoard(id) {
       const url = "http://localhost:3000/board";

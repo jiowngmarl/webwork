@@ -15,4 +15,13 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+
+  server: { 
+      proxy: {     //proxy서버를 거쳐서 ap.mysql.js에 /api/users로 이동
+      '/api': {   // target주소 
+      target:'http://localhost:3000', 
+      changeOrigin: true 
+      } 
+    } 
+  }
 })

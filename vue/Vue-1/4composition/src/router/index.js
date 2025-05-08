@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import BoardList from '@/views/BoardList.vue'
-import BoardInfo from '@/views/BoardInfo.vue'
+// import BoardList from '../views/BoardList.vue'
+// import BoardInfo from '../views/BoardInfo.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,15 +20,35 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },
     {
-      path: '/boardList',
-      name: 'boardList',
-      component: BoardList,
+      path: '/nested',
+      name: 'nested',
+      component: () => import('../views/NestedComponent.vue'),
     },
     {
-      path: '/boardInfo/:id',
-      name: 'boardInfo',
-      component: BoardInfo,
+      path: '/component',
+      name: 'component',
+      component: () => import('../views/ComponentView.vue'),
     },
+    {
+      path: '/provideInject',
+      name: 'provideInject',
+      component: () => import('../views/ProvideInject.vue'),
+    },
+    {
+      path: '/watchView',
+      name: 'watchView',
+      component: () => import('../views/WatchView.vue'),
+    },
+    // {
+    //   path: '/boardList',
+    //   name: 'boardList',
+    //   component: BoardList,
+    // },
+    // {
+    //   path: '/boardInfo/:id',
+    //   name: 'boardInfo',
+    //   component: BoardInfo,
+    // },
   ],
 })
 

@@ -38,33 +38,9 @@
         </tbody>
       </table>
     </div>
+</div>
 
-    <!-- 댓글 -->
-    <div class="row">
-      <CommentComp v-if="boardInfo.id" :bid="boardInfo.id" />
-    </div>
-  </div>
 </template>
-<script setup>
-import axios from "axios";
-import {ref} from 'vue';
-import { useRoute, useRouter} from "vue-router";
-
-//  import CommentComp from "@/components/CommentComp.vue"
-
-const router = useRouter();
-const route = useRoute();
-const boardInfo = ref([])
-
-const getBoardInfo = async()=>{
-  let result = await axios.get(`/api/comment`);
-  boardInfo.value = result.data;
-}
-
-function goToListForm() {
-  router.push('/boardList')
-}
-
-
+<script>
 
 </script>

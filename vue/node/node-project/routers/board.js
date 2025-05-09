@@ -7,6 +7,11 @@ router.get("", async (req, res) => {
   res.send(result);
 });
 
+router.get("", async (req, res) => {
+  const result = await query("board", "selectList", null);
+  res.send(result);
+} )
+
 router.post("", async (req, res)=> { 
   const result = await query("board", "insertInfo", [req.body.title, req.body.writer, req.body.content]);
   res.send(result);

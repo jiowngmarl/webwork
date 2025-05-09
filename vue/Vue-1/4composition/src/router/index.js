@@ -39,6 +39,11 @@ const router = createRouter({
       name: 'watchView',
       component: () => import('../views/WatchView.vue'),
     },
+    {
+      path: '/storeView',
+      name: 'storeView',
+      component: () => import('../views/StoreView.vue'),
+    },
     // {
     //   path: '/boardList',
     //   name: 'boardList',

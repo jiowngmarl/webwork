@@ -13,30 +13,24 @@
             <th scope="col" class="text-center table-primary">가격 : </th>
             <td scope="col" class="text-center">{{ book.price }}</td>
           </tr>
-            <th scope="col" class="text-center table-primary">내용 : </th>
-            <td scope="col" class="text-center">{{ book.bookInfo }}</td>
-          <tr>
-
-          </tr>
         </thead>
         <tbody>
           <tr>
-            <td colspan="6" class="text-left" valign="top" height="200">
-              <pre
-                style="white-space: pre-wrap;
-                  border: none;
-                  background-color: white; "></pre>
+            <th scope="col" class="text-center table-primary">내용 :</th>
+            <td colspan="7" class="text-left align-top" style="height: 200px;">
+              {{ book.bookInfo }}
             </td>
           </tr>
           <tr>
-            <button class="btn btn-xs btn-info" @click="goUpdateBook(book.id)">수정</button>
-            <button class="btn btn-xs btn-warining" @click="goBookList()">목록</button>
+            <td colspan="8" class="text-center">
+              <button class="btn btn-xs btn-info" @click="goUpdateBook(book.id)">수정</button>
+              <button class="btn btn-xs btn-warning" @click="goBookList()">목록</button>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
 </div>
-
 </template>
 <script>
 import axios from "axios";

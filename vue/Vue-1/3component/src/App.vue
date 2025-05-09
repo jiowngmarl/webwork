@@ -18,6 +18,8 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/emp">emp</RouterLink>
         <RouterLink to="/empView">empView</RouterLink>
         <RouterLink to="/slotView">slotView</RouterLink>
+        <RouterLink to="/vuetify">vuetify</RouterLink>
+        <RouterLink to="/store">store</RouterLink>
       </nav>
     </div>
   </header>

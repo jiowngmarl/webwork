@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import NestedComponent from '@/views/NestedComponent.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,6 +38,16 @@ const router = createRouter({
       path: '/slotView',
       name: 'slotView',
       component: () => import('@/views/SlotView.vue'),
+    },
+    {
+      path: '/vuetify',
+      name: 'vuetify',
+      component: () => import('@/views/VuetifyView.vue'),
+    },
+    {
+      path: '/store',
+      name: 'store',
+      component: () => import('@/views/StoreView.vue'),
     },
   ],
 })

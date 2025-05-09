@@ -32,6 +32,11 @@ const router = createRouter({
       name: 'bookForm',
       component: () => import('../views/BookForm.vue'),
     },
+    {
+      path: '/insertBook',
+      name: 'insertBook',
+      component: () => import('../views/InsertBook.vue'),
+    },
   ],
 })
 

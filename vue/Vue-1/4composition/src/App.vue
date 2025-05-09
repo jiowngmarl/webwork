@@ -17,6 +17,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/component">component</RouterLink>
         <RouterLink to="/provideInject">provideInject</RouterLink>
         <RouterLink to="/watchView">watchView</RouterLink>
+        <RouterLink to="/storeView">storeView</RouterLink>
       </nav>
     </div>
   </header>
